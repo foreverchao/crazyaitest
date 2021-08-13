@@ -15,14 +15,6 @@ CORS(app)
 def index():
     return 'hellth ok'
 
-@app.route('/pre',methods=['GET'])
-def postInput():
-    users = collection.find()
-    resp = dumps(users)
-   
-    
-    print (resp)
-    return resp
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=3000,debug = False)
