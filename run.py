@@ -1,6 +1,12 @@
 from logging import debug
 from flask import Flask,request,jsonify
 from flask_cors import CORS
+import pymongo
+from bson.json_util import dumps
+
+client = pymongo.MongoClient("mongodb+srv://root:root123@mycluster.bqv3q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+db = client.website
+collection = db.members
 
 
 app = Flask(__name__)
@@ -10,13 +16,14 @@ CORS(app)
 def index():
     return 'hellth ok'
 
-@app.route('/pre',methods=['POST'])
+@app.route('/pre',methods=['GET'])
 def postInput():
-    insertValue = request.get_json()
-    x1 = insertValue['speal']
-    input = [x1]
-    print (input)
-    return jsonify({'return':'ok'})
+    users = collection.find()
+    resp = dumps(users)
+   
+    
+    print (resp)
+    return resp
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=3000,debug = False)
