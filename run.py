@@ -1,5 +1,4 @@
-from logging import debug
-from flask import Flask,request,jsonify
+from flask import Flask
 from flask_cors import CORS
 import pymongo
 from bson.json_util import dumps
