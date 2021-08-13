@@ -3,9 +3,6 @@ from flask_cors import CORS
 import pymongo
 from bson.json_util import dumps
 
-client = pymongo.MongoClient("mongodb+srv://root:root123@mycluster.bqv3q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-db = client.website
-collection = db.members
 
 
 app = Flask(__name__)
